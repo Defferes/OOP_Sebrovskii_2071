@@ -10,53 +10,58 @@ using System.Windows.Forms;
 
 namespace Calculator_fractions
 {
-    public partial class Form1 : Form
+    enum Action
     {
+        Sum,
+        Sub,
+        Mul,
+        Div,
+        None
+    }
+    
+    public partial class Form1 : Form
+    {   
+
         public int numerator1, numerator2, denominator1, denominator2;
-        public string action;
+        Action action = Action.None;
         public Form1()
         {
             InitializeComponent();
         }
-
-
+        
         private void SumBtn_Click(object sender, EventArgs e)
         {
-            numerator1 = Convert.ToInt32(textBox1.Text);
-            numerator2 = Convert.ToInt32(textBox4.Text);
-            denominator1 = Convert.ToInt32(textBox2.Text);
-            denominator2 = Convert.ToInt32(textBox3.Text);
-            action = "Sum";
+
+            action = Action.Sum;
         }
 
         private void Result_Click(object sender, EventArgs e)
         {
-
-            Rational first = new Rational(numerator1, denominator1);
-            Rational second = new Rational(numerator2, denominator2);
-            Rational result;
             if ((Int32.TryParse(textBox1.Text, out numerator1) && (Int32.TryParse(textBox4.Text, out numerator2) && (Int32.TryParse(textBox2.Text, out denominator1) && (Int32.TryParse(textBox3.Text, out denominator2))))))
             {
+                Rational first = new Rational(numerator1, denominator1);
+                Rational second = new Rational(numerator2, denominator2);
+                Rational result;
                 if ((denominator1 != 0) && (denominator2 != 0))
                 {
                     switch (action)
                     {
-                        case "Sum":
+                        case Action.Sum:
                             result = first + second;
                             result = result.Reduction(result);
                             textBox6.Text = result.ToString(result);
                             break;
-                        case "Sub":
+                        case Action.Sub:
                             result = first - second;
                             result = result.Reduction(result);
                             textBox6.Text = result.ToString(result);
                             break;
-                        case "Mul":
+                        case Action.Mul:
                             result = first * second;
                             result = result.Reduction(result);
                             textBox6.Text = result.ToString(result);
                             break;
-                        case "Div":
+                        case Action.Div:
                             result = first / second;
                             result = result.Reduction(result);
                             textBox6.Text = result.ToString(result);
@@ -74,31 +79,21 @@ namespace Calculator_fractions
             }
 
         }
+
+
         private void SubtrBtn_Click(object sender, EventArgs e)
         {
-            numerator1 = Convert.ToInt32(textBox1.Text);
-            numerator2 = Convert.ToInt32(textBox4.Text);
-            denominator1 = Convert.ToInt32(textBox2.Text);
-            denominator2 = Convert.ToInt32(textBox3.Text);
-            action = "Sub";
+            action = Action.Sub;
         }
 
         private void MultiBtn_Click(object sender, EventArgs e)
         {
-            numerator1 = Convert.ToInt32(textBox1.Text);
-            numerator2 = Convert.ToInt32(textBox4.Text);
-            denominator1 = Convert.ToInt32(textBox2.Text);
-            denominator2 = Convert.ToInt32(textBox3.Text);
-            action = "Mul";
+            action = Action.Mul;
         }
 
         private void Division_Click(object sender, EventArgs e)
         {
-            numerator1 = Convert.ToInt32(textBox1.Text);
-            numerator2 = Convert.ToInt32(textBox4.Text);
-            denominator1 = Convert.ToInt32(textBox2.Text);
-            denominator2 = Convert.ToInt32(textBox3.Text);
-            action = "Div";
+            action = Action.Div;
         }
 
     }

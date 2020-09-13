@@ -17,16 +17,8 @@ namespace Calculator_fractions
         public Rational Sum(Rational second)
         {
             Rational result = new Rational(0, 0);
-            if(this.denominator == second.denominator)
-            {
-                result.denominator = this.denominator;
-                result.numerator = this.numerator + second.numerator;
-            }
-            else
-            {
-                result.numerator = this.numerator * second.denominator + second.numerator * this.denominator;
-                result.denominator = this.denominator * second.denominator;
-            }
+            result.numerator = this.numerator * second.denominator + second.numerator * this.denominator;
+            result.denominator = this.denominator * second.denominator;
             return result;
         }
         public Rational Subtraction(Rational second)
@@ -62,9 +54,9 @@ namespace Calculator_fractions
         {
             int a = first.numerator;
             int b = first.denominator;
-            while(a !=b)
+            while (a != b)
             {
-                if(a>b)
+                if (a > b)
                 {
                     a = a - b;
                 }
@@ -79,12 +71,15 @@ namespace Calculator_fractions
         }
         public string ToString(Rational first)
         {
-            if(first.denominator== 1)
+            if (first.denominator == 1)
             {
                 return Convert.ToString(first.numerator);
             }
             else
-            return Convert.ToString(first.numerator) + "/" + Convert.ToString(first.denominator);
+            {
+                return Convert.ToString(first.numerator) + "/" + Convert.ToString(first.denominator);
+            }
+
         }
         public static Rational operator +(Rational first, Rational second)
         {
