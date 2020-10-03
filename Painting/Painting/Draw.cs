@@ -14,6 +14,7 @@ namespace Painting
         public virtual int Y { get; set; }
         public virtual int Width { get; set; }
         public virtual int Heigth { get; set; }
+        public virtual int L { get; set; }
 
         public string Output(int x, int y)
         {
@@ -22,6 +23,11 @@ namespace Painting
         public virtual void Drawer(Graphics graphics)
         {
             
+        }
+        public virtual void Move(int StartX, int StartY,int eX, int eY)
+        {
+            X = eX - StartX;
+            Y = eY - StartY;
         }
 
         public virtual bool IsPointInside(int Ex, int Ey)

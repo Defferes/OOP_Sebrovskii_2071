@@ -15,6 +15,7 @@ namespace Painting
         Rect,
         Circle,
         Move,
+        Vagon,
         None
     }
     public partial class Form1 : Form
@@ -97,6 +98,11 @@ namespace Painting
                     break;
                 case Action.Move:
                     break;
+                case Action.Vagon:
+                    draw = new MyWagon(e.X, e.Y, 150);
+                    draw.Drawer(graphics);
+                    Figure.Add(draw);
+                    break;
             }
         }
 
@@ -114,6 +120,11 @@ namespace Painting
             }
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            action = Action.Vagon;
+        }
+
         private void panel1_MouseUp(object sender, MouseEventArgs e)
         {
             IsClicked = false;
@@ -123,8 +134,7 @@ namespace Painting
         {
             if (IsClicked && action == Action.Move)
             {
-                MoveItem.X = e.X - StartX;
-                MoveItem.Y = e.Y - StartY;
+                MoveItem.Move(StartX,StartY,e.X, e.Y);
                 panel1.Invalidate();
             }
         }

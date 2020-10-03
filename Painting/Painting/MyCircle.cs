@@ -65,6 +65,10 @@ namespace Painting
         {
             graphics.DrawEllipse(new Pen(new SolidBrush(Color.Black)), x - width / 2, y - heigth / 2, width, heigth);
         }
+        public override void Move(int StartX, int StartY, int eX, int eY)
+        {
+            base.Move(StartX, StartY, eX, eY);
+        }
         public override bool IsPointInside(int Ex, int Ey)
         {
             if(Math.Pow((Ex - this.x ),2) + Math.Pow((Ey - this.y), 2) <= Math.Pow(width/2,2))

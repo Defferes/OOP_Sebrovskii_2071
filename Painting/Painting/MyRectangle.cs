@@ -65,6 +65,10 @@ namespace Painting
         {
            graphics.DrawRectangle(new Pen(new SolidBrush(Color.Black)), x - width / 2, y - heigth / 2, width, heigth);
         }
+        public override void Move(int StartX, int StartY, int eX, int eY)
+        {
+            base.Move(StartX, StartY, eX, eY);
+        }
         public override bool IsPointInside(int Ex, int Ey)
         {
             if ((Ex > this.x - width / 2) && (Ex < this.x + width / 2) && (Ey > this.y - heigth / 2) && (Ey < this.y + heigth / 2))
