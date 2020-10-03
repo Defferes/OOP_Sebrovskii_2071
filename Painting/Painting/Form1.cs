@@ -24,7 +24,7 @@ namespace Painting
         Draw draw,MoveItem;
         List<Draw> Figure = new List<Draw>();
         Action action = Action.None;
-        private int StartX, StartY;
+        private int StartX, StartY,height,width,l;
         private bool IsClicked;
         public Form1()
         {
@@ -43,6 +43,7 @@ namespace Painting
             action = Action.Circle;
             CirPanel.Visible = true;
             RecPanel.Visible = false;
+            WagonPanel.Visible = false;
         }
         private void CreatRecBtn_Click(object sender, EventArgs e)
         {
@@ -50,25 +51,8 @@ namespace Painting
             action = Action.Rect;
             RecPanel.Visible = true; 
             CirPanel.Visible = false;
+            WagonPanel.Visible = false;
         }
-
-        private void ParametersBtn_Click(object sender, EventArgs e)
-        {
-            switch (action)
-            {
-                case Action.Circle:
-                    draw.Heigth = Convert.ToInt32(SizeBox.Text);
-                    draw.Width = Convert.ToInt32(SizeBox.Text);
-                    break;
-                case Action.Rect:
-                    draw.Width = Convert.ToInt32(WidthBox.Text);
-                    draw.Heigth = Convert.ToInt32(HeigthBox.Text);
-                    break;
-            }
-
-        }
-
-
         private void MoveBtn_Click(object sender, EventArgs e)
         {
             action = Action.Move;
@@ -84,25 +68,56 @@ namespace Painting
 
         private void panel1_MouseClick(object sender, MouseEventArgs e)
         {
-            switch(action)
+            switch (action)
             {
                 case Action.Circle:
-                    draw = new MyCircle(e.X, e.Y, draw.Heigth, draw.Width);
-                    draw.Drawer(graphics);
-                    Figure.Add(draw);
-                    break;
+                    if (Int32.TryParse(SizeBox.Text, out height))
+                    {
+                        draw.Heigth = height;
+                        draw.Width = height;
+                        draw = new MyCircle(e.X, e.Y, draw.Heigth, draw.Width);
+                        draw.Drawer(graphics);
+                        Figure.Add(draw);
+                        break;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Неверные значения");
+                        break;
+                    }
+
                 case Action.Rect:
-                    draw = new MyRectangle(e.X, e.Y, draw.Heigth, draw.Width);
-                    draw.Drawer(graphics);
-                    Figure.Add(draw);
-                    break;
+                    if (Int32.TryParse(HeigthBox.Text, out height) && Int32.TryParse(HeigthBox.Text, out width))
+                    {
+                        draw.Width = width;
+                        draw.Heigth = height;
+                        draw = new MyRectangle(e.X, e.Y, draw.Heigth, draw.Width);
+                        draw.Drawer(graphics);
+                        Figure.Add(draw);
+                        break;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Неверные значения");
+                        break;
+                    }
+            
                 case Action.Move:
                     break;
                 case Action.Vagon:
-                    draw = new MyWagon(e.X, e.Y, 150);
-                    draw.Drawer(graphics);
-                    Figure.Add(draw);
-                    break;
+                    if (Int32.TryParse(SizeWagonBox.Text, out l))
+                    {
+                        draw.L = l;
+                        draw = new MyWagon(e.X, e.Y, draw.L);
+                        draw.Drawer(graphics);
+                        Figure.Add(draw);
+                        break;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Неверные значения");
+                        break;
+                    }
             }
         }
 
@@ -120,9 +135,13 @@ namespace Painting
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void WagonCreatBtn_Click(object sender, EventArgs e)
         {
+            draw = new MyWagon(0, 0, 0);
             action = Action.Vagon;
+            WagonPanel.Visible = true;
+            CirPanel.Visible = false; ;
+            RecPanel.Visible = false;
         }
 
         private void panel1_MouseUp(object sender, MouseEventArgs e)

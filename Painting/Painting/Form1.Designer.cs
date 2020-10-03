@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.CreatCirclBtn = new System.Windows.Forms.Button();
-            this.ParametersBtn = new System.Windows.Forms.Button();
             this.CreatRecBtn = new System.Windows.Forms.Button();
             this.SizeBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -43,9 +42,14 @@
             this.label9 = new System.Windows.Forms.Label();
             this.MoveBtn = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.WagonCreatBtn = new System.Windows.Forms.Button();
+            this.WagonPanel = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.SizeWagonBox = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.CirPanel.SuspendLayout();
             this.RecPanel.SuspendLayout();
+            this.WagonPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // CreatCirclBtn
@@ -57,16 +61,6 @@
             this.CreatCirclBtn.Text = "Создать круг";
             this.CreatCirclBtn.UseVisualStyleBackColor = true;
             this.CreatCirclBtn.Click += new System.EventHandler(this.CreatCirclBtn_Click);
-            // 
-            // ParametersBtn
-            // 
-            this.ParametersBtn.Location = new System.Drawing.Point(462, 643);
-            this.ParametersBtn.Name = "ParametersBtn";
-            this.ParametersBtn.Size = new System.Drawing.Size(196, 73);
-            this.ParametersBtn.TabIndex = 4;
-            this.ParametersBtn.Text = "Задать параметры";
-            this.ParametersBtn.UseVisualStyleBackColor = true;
-            this.ParametersBtn.Click += new System.EventHandler(this.ParametersBtn_Click);
             // 
             // CreatRecBtn
             // 
@@ -133,7 +127,7 @@
             this.CirPanel.Controls.Add(this.label1);
             this.CirPanel.Location = new System.Drawing.Point(677, 610);
             this.CirPanel.Name = "CirPanel";
-            this.CirPanel.Size = new System.Drawing.Size(236, 239);
+            this.CirPanel.Size = new System.Drawing.Size(236, 116);
             this.CirPanel.TabIndex = 20;
             this.CirPanel.Visible = false;
             // 
@@ -191,28 +185,64 @@
             this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
             this.panel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseUp);
             // 
-            // button1
+            // WagonCreatBtn
             // 
-            this.button1.Location = new System.Drawing.Point(240, 734);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(196, 73);
-            this.button1.TabIndex = 24;
-            this.button1.Text = "Vagoon";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.WagonCreatBtn.Location = new System.Drawing.Point(240, 734);
+            this.WagonCreatBtn.Name = "WagonCreatBtn";
+            this.WagonCreatBtn.Size = new System.Drawing.Size(196, 73);
+            this.WagonCreatBtn.TabIndex = 24;
+            this.WagonCreatBtn.Text = "Вагон";
+            this.WagonCreatBtn.UseVisualStyleBackColor = true;
+            this.WagonCreatBtn.Click += new System.EventHandler(this.WagonCreatBtn_Click);
+            // 
+            // WagonPanel
+            // 
+            this.WagonPanel.Controls.Add(this.label2);
+            this.WagonPanel.Controls.Add(this.SizeWagonBox);
+            this.WagonPanel.Controls.Add(this.label3);
+            this.WagonPanel.Location = new System.Drawing.Point(677, 732);
+            this.WagonPanel.Name = "WagonPanel";
+            this.WagonPanel.Size = new System.Drawing.Size(236, 116);
+            this.WagonPanel.TabIndex = 22;
+            this.WagonPanel.Visible = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(74, 7);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(70, 25);
+            this.label2.TabIndex = 21;
+            this.label2.Text = "Вагон";
+            // 
+            // SizeWagonBox
+            // 
+            this.SizeWagonBox.Location = new System.Drawing.Point(119, 51);
+            this.SizeWagonBox.Name = "SizeWagonBox";
+            this.SizeWagonBox.Size = new System.Drawing.Size(100, 31);
+            this.SizeWagonBox.TabIndex = 6;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(3, 54);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(103, 25);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Размеры";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1283, 852);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.WagonPanel);
+            this.Controls.Add(this.WagonCreatBtn);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.MoveBtn);
             this.Controls.Add(this.RecPanel);
             this.Controls.Add(this.CirPanel);
             this.Controls.Add(this.CreatRecBtn);
-            this.Controls.Add(this.ParametersBtn);
             this.Controls.Add(this.CreatCirclBtn);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -221,13 +251,14 @@
             this.CirPanel.PerformLayout();
             this.RecPanel.ResumeLayout(false);
             this.RecPanel.PerformLayout();
+            this.WagonPanel.ResumeLayout(false);
+            this.WagonPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private System.Windows.Forms.Button CreatCirclBtn;
-        private System.Windows.Forms.Button ParametersBtn;
         private System.Windows.Forms.Button CreatRecBtn;
         private System.Windows.Forms.TextBox SizeBox;
         private System.Windows.Forms.Label label1;
@@ -241,7 +272,11 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button MoveBtn;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button WagonCreatBtn;
+        private System.Windows.Forms.Panel WagonPanel;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox SizeWagonBox;
+        private System.Windows.Forms.Label label3;
     }
 }
 

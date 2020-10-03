@@ -99,7 +99,18 @@ namespace Painting
             {
                 return true;
             }
-            else { return false; }
+            if (Wheel_1.IsPointInside(Ex, Ey))
+            {
+                return true;
+            }
+            if (Wheel_2.IsPointInside(Ex, Ey))
+            {
+                return true;
+            }
+            else 
+            { 
+                return false;
+            }
         }
     }
 }
