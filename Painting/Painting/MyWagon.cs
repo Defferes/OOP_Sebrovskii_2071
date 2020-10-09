@@ -96,7 +96,7 @@ namespace Painting
             Body.Drawer(graphics);
             Wheel_1.Drawer(graphics);
             Wheel_2.Drawer(graphics);
-            graphics.DrawString(Convert.ToString(Cargo), new Font("Arial", 10), Brushes.Black, X - 10, Y - 10);
+            graphics.DrawString(Convert.ToString(Cargo), new Font("Arial", L/4), Brushes.Black, X - L/4  , Y - L/4);
 
         }
         public override void Move(int StartX, int StartY, int eX, int eY)

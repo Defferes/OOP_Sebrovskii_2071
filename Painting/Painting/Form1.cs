@@ -118,10 +118,7 @@ namespace Painting
                 case Action.Vagon:
                     if (Int32.TryParse(SizeWagonBox.Text, out l))
                     {
-                        draw.L = l;
-                        draw = new MyWagon(e.X, e.Y, draw.L, rnd.Next(100));
-                        draw.X = e.X;
-                        draw.Y = e.Y;
+                        draw = new MyWagon(e.X, e.Y, l, rnd.Next(100));
                         draw.Drawer(graphics);
                         Figure.Add(draw);
                         break;
@@ -136,7 +133,7 @@ namespace Painting
                         {
                         draw.L = l;
                         draw.Length = length;
-                        draw = new MyTrain(e.X, e.Y, draw.L, draw.Length);
+                        draw = new MyTrain(e.X, e.Y, l, length);
                         draw.Drawer(graphics);
                         Figure.Add(draw);
                         break;

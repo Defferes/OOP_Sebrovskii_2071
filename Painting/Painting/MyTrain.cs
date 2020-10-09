@@ -65,10 +65,13 @@ namespace Painting
         }
         public override void Drawer(Graphics graphics)
         {
+            int cargo = 0;
             foreach (MyWagon item in Wagons)
             {
                 item.Drawer(graphics);
+                cargo += item.Cargo;
             }
+            graphics.DrawString("Масса груза: " + Convert.ToString(cargo), new Font("Arial", 10), Brushes.Black, 10, 10);
         }
         public override void WagonsAdding(int x, int y)
         {
