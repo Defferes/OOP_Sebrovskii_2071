@@ -11,7 +11,7 @@ namespace Painting
     {
         MyRectangle Body;
         MyCircle Wheel_1, Wheel_2;
-        private int l, width, heigth, x, y;
+        private int l, width, heigth, x, y, cargo;
         public override int X
         {
             get
@@ -67,8 +67,22 @@ namespace Painting
                 heigth = value;
             }
         }
-        public MyWagon(int x, int y, int l)
+        public override int Cargo
         {
+            get
+            {
+                return cargo;
+            }
+            set
+            {
+                cargo = value;
+            }
+        }
+        public MyWagon(int x, int y, int l, int cargo)
+        {
+            Cargo = cargo;
+            X = x;
+            Y = y;
             L = l;
             heigth = l / 2;
             width = l;
@@ -82,6 +96,7 @@ namespace Painting
             Body.Drawer(graphics);
             Wheel_1.Drawer(graphics);
             Wheel_2.Drawer(graphics);
+            graphics.DrawString(Convert.ToString(Cargo), new Font("Arial", 10), Brushes.Black, X - 10, Y - 10);
 
         }
         public override void Move(int StartX, int StartY, int eX, int eY)

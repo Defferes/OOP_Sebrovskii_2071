@@ -47,6 +47,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.SizeWagonBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.LengthTrainBox = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.CirPanel.SuspendLayout();
             this.RecPanel.SuspendLayout();
             this.WagonPanel.SuspendLayout();
@@ -197,6 +200,8 @@
             // 
             // WagonPanel
             // 
+            this.WagonPanel.Controls.Add(this.LengthTrainBox);
+            this.WagonPanel.Controls.Add(this.label5);
             this.WagonPanel.Controls.Add(this.label2);
             this.WagonPanel.Controls.Add(this.SizeWagonBox);
             this.WagonPanel.Controls.Add(this.label3);
@@ -217,7 +222,7 @@
             // 
             // SizeWagonBox
             // 
-            this.SizeWagonBox.Location = new System.Drawing.Point(119, 51);
+            this.SizeWagonBox.Location = new System.Drawing.Point(119, 35);
             this.SizeWagonBox.Name = "SizeWagonBox";
             this.SizeWagonBox.Size = new System.Drawing.Size(100, 31);
             this.SizeWagonBox.TabIndex = 6;
@@ -225,17 +230,44 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 54);
+            this.label3.Location = new System.Drawing.Point(3, 38);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(103, 25);
             this.label3.TabIndex = 7;
             this.label3.Text = "Размеры";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(455, 734);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(196, 73);
+            this.button1.TabIndex = 26;
+            this.button1.Text = "Поезд";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // LengthTrainBox
+            // 
+            this.LengthTrainBox.Location = new System.Drawing.Point(119, 72);
+            this.LengthTrainBox.Name = "LengthTrainBox";
+            this.LengthTrainBox.Size = new System.Drawing.Size(100, 31);
+            this.LengthTrainBox.TabIndex = 22;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(3, 75);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(88, 25);
+            this.label5.TabIndex = 23;
+            this.label5.Text = "Длинна";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1283, 852);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.WagonPanel);
             this.Controls.Add(this.WagonCreatBtn);
             this.Controls.Add(this.panel1);
@@ -277,6 +309,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox SizeWagonBox;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox LengthTrainBox;
+        private System.Windows.Forms.Label label5;
     }
 }
 

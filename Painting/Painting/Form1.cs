@@ -16,6 +16,7 @@ namespace Painting
         Circle,
         Move,
         Vagon,
+        Train,
         None
     }
     public partial class Form1 : Form
@@ -24,7 +25,7 @@ namespace Painting
         Draw draw,MoveItem;
         List<Draw> Figure = new List<Draw>();
         Action action = Action.None;
-        private int StartX, StartY,height,width,l;
+        private int StartX, StartY,height,width,l, length;
         private bool IsClicked;
         public Form1()
         {
@@ -66,8 +67,18 @@ namespace Painting
             }
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            draw = new MyTrain(0, 0, 0, 0);
+            action = Action.Train;
+            WagonPanel.Visible = true;
+            CirPanel.Visible = false;
+            RecPanel.Visible = false;
+        }
+
         private void panel1_MouseClick(object sender, MouseEventArgs e)
         {
+            Random rnd = new Random();
             switch (action)
             {
                 case Action.Circle:
@@ -87,7 +98,7 @@ namespace Painting
                     }
 
                 case Action.Rect:
-                    if (Int32.TryParse(HeigthBox.Text, out height) && Int32.TryParse(HeigthBox.Text, out width))
+                    if (Int32.TryParse(HeigthBox.Text, out height) && Int32.TryParse(WidthBox.Text, out width))
                     {
                         draw.Width = width;
                         draw.Heigth = height;
@@ -108,7 +119,9 @@ namespace Painting
                     if (Int32.TryParse(SizeWagonBox.Text, out l))
                     {
                         draw.L = l;
-                        draw = new MyWagon(e.X, e.Y, draw.L);
+                        draw = new MyWagon(e.X, e.Y, draw.L, rnd.Next(100));
+                        draw.X = e.X;
+                        draw.Y = e.Y;
                         draw.Drawer(graphics);
                         Figure.Add(draw);
                         break;
@@ -118,6 +131,23 @@ namespace Painting
                         MessageBox.Show("Неверные значения");
                         break;
                     }
+                case Action.Train:
+                    if ((Int32.TryParse(SizeWagonBox.Text, out l)) && (Int32.TryParse(LengthTrainBox.Text, out length)))
+                        {
+                        draw.L = l;
+                        draw.Length = length;
+                        draw = new MyTrain(e.X, e.Y, draw.L, draw.Length);
+                        draw.Drawer(graphics);
+                        Figure.Add(draw);
+                        break;
+                    }
+
+                    else
+                    {
+                        MessageBox.Show("Неверные значения");
+                        break;
+                    }
+
             }
         }
 
@@ -137,10 +167,10 @@ namespace Painting
 
         private void WagonCreatBtn_Click(object sender, EventArgs e)
         {
-            draw = new MyWagon(0, 0, 0);
+            draw = new MyWagon(0, 0, 0, 0);
             action = Action.Vagon;
             WagonPanel.Visible = true;
-            CirPanel.Visible = false; ;
+            CirPanel.Visible = false; 
             RecPanel.Visible = false;
         }
 

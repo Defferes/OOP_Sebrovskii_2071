@@ -56,6 +56,7 @@
     </Compile>
     <Compile Include="MyCircle.cs" />
     <Compile Include="MyRectangle.cs" />
+    <Compile Include="MyTrain.cs" />
     <Compile Include="MyWagon.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

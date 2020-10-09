@@ -15,11 +15,9 @@ namespace Painting
         public virtual int Width { get; set; }
         public virtual int Heigth { get; set; }
         public virtual int L { get; set; }
+        public virtual int Length { get; set; }
+        public virtual int Cargo { get; set; }
 
-        public string Output(int x, int y)
-        {
-            return Convert.ToString("X - Координата " + x + ", Y - Координата " + y);
-        }
         public virtual void Drawer(Graphics graphics)
         {
             
@@ -33,6 +31,10 @@ namespace Painting
         public virtual bool IsPointInside(int Ex, int Ey)
         {
             return false;
+        }
+        public virtual void WagonsAdding(int x, int y)
+        {
+
         }
 
     }
