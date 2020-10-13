@@ -9,31 +9,9 @@ namespace Painting
 {
     class MyTrain : Draw
     {
-        private int x, y, l, length;
+        private int l, length, cargoSum;
         private MyWagon Wagon;
         private List<MyWagon> Wagons = new List<MyWagon>();
-        public override int X
-        {
-            get
-            {
-                return x;
-            }
-            set
-            {
-                x = value;
-            }
-        }
-        public override int Y
-        {
-            get
-            {
-                return y;
-            }
-            set
-            {
-                y = value;
-            }
-        }
         public override int L
         {
             get
@@ -65,23 +43,63 @@ namespace Painting
         }
         public override void Drawer(Graphics graphics)
         {
-            int cargo = 0;
             foreach (MyWagon item in Wagons)
             {
                 item.Drawer(graphics);
-                cargo += item.Cargo;
             }
-            graphics.DrawString("Масса груза: " + Convert.ToString(cargo), new Font("Arial", 10), Brushes.Black, 10, 10);
         }
         public override void WagonsAdding(int x, int y)
         {
-           Random rnd = new Random();
+            Random rndCargo = new Random();
+            Random rnd = new Random();
             for (int i = 1; i <= Length; i++)
             {
-                Wagon = new MyWagon(x, y, L, rnd.Next(100));
-                Wagons.Add(Wagon);
-                x += (Wagon.Width + 4);
+                int action = rnd.Next(2);
+                if ( action == 0 )
+                {
+                    Wagon = new MyWagonCoal(x, y, L);
+                    Wagon.Cargo = rndCargo.Next(100);
+                    Wagons.Add(Wagon);
+                    x += (Wagon.Width + 4);
+                }
+                if ( action == 1 )
+                {
+                    Wagon = new MyWagonSand(x, y, L);
+                    Wagons.Add(Wagon);
+                    x += (Wagon.Width + 4);
+                    Wagon.Cargo = rndCargo.Next(100);
+                }
             }
+        }
+        public override void Move(int StartX, int StartY, int eX, int eY)
+        {
+            foreach (Draw item in Wagons)
+            {
+                if(item.IsPointInside(eX,eY))
+                {
+                    item.Move(StartX, StartY, eX, eY);
+                    eX += item.Width + 4;
+                }
+
+            }
+                
+        }
+        public override int CargoSum()
+        {
+            foreach (MyWagon item in Wagons)
+            {
+                cargoSum += item.Cargo;
+            }
+            return cargoSum;
+        }
+        public override bool IsPointInside(int Ex, int Ey)
+        {
+            foreach (Draw item in Wagons)
+            {
+                return item.IsPointInside(Ex, Ey);
+            }
+            return false;
+                
         }
     }
 }

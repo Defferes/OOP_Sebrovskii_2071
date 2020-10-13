@@ -7,12 +7,34 @@ using System.Threading.Tasks;
 
 namespace Painting
 {
-    class MyWagon : Draw
+    class MyWagonSand : MyWagon
     {
         MyRectangle Body;
         MyCircle Wheel_1, Wheel_2;
-        private int l, width, heigth, x, y, cargo;
-        Random rnd = new Random();
+        Rectangle rect;
+        private int l, width, heigth, x, y;
+        public override int X
+        {
+            get
+            {
+                return x;
+            }
+            set
+            {
+                x = value;
+            }
+        }
+        public override int Y
+        {
+            get
+            {
+                return y;
+            }
+            set
+            {
+                y = value;
+            }
+        }
         public override int L
         {
             get
@@ -46,58 +68,32 @@ namespace Painting
                 heigth = value;
             }
         }
-        public override int Cargo
-        {
-            get
-            {
-                return cargo;
-            }
-            set
-            {
-                cargo = value;
-            }
-        }
 
-        public MyWagon(int x, int y, int l)
+        public MyWagonSand(int x, int y, int l) : base(x,y,l)
         {
             L = l;
             heigth = l / 2;
             width = l;
-            cargo = rnd.Next(100);
             Body = new MyRectangle(x, y, heigth, width);
             Wheel_1 = new MyCircle(x - width / 4, y + heigth / 2 + (width / 5) / 2 + 2, width / 5, width / 5);
             Wheel_2 = new MyCircle(x + width / 4, y + heigth / 2 + (width / 5) / 2 + 2, width / 5, width / 5);
-
+            rect = new Rectangle(x - width / 2, y - heigth, width, 3 * heigth / 6);
         }
-
         public override void Drawer(Graphics graphics)
         {
-            Body.Drawer(graphics);
-            Wheel_1.Drawer(graphics);
-            Wheel_2.Drawer(graphics);
-            graphics.DrawString(Convert.ToString(cargo), new Font("Arial", L/4), Brushes.Black, Body.X - L/4  , Body.Y - L/4);
+            base.Drawer(graphics);
+            graphics.FillRectangle(new SolidBrush(Color.Yellow), rect);
 
         }
         public override void Move(int StartX, int StartY, int eX, int eY)
         {
-            Body.X = eX - x;
-            Body.Y = eY - y;
-            Wheel_1.X = eX - x - width / 4;
-            Wheel_1.Y = eY - y + heigth / 2 + (width / 5) / 2 + 2;
-            Wheel_2.X = eX - x + width / 4;
-            Wheel_2.Y = eY - y + heigth / 2 + (width / 5) / 2 + 2;
+            base.Move(StartX, StartY, eX, eY);
+            rect.X = eX - x - width / 2;
+            rect.Y = eY - y - heigth;
         }
-
         public override bool IsPointInside(int Ex, int Ey)
         {
-            if (Body.IsPointInside(Ex, Ey) == true || Wheel_1.IsPointInside(Ex, Ey) == true || Wheel_2.IsPointInside(Ex, Ey) == true)
-            {
-                return true;
-            }
-            else 
-            { 
-                return false;
-            }
+            return base.IsPointInside(Ex, Ey);
         }
     }
 }

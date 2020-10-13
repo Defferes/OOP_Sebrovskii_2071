@@ -58,6 +58,8 @@
     <Compile Include="MyRectangle.cs" />
     <Compile Include="MyTrain.cs" />
     <Compile Include="MyWagon.cs" />
+    <Compile Include="MyWagonCoal.cs" />
+    <Compile Include="MyWagonSand.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">

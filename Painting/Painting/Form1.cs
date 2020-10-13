@@ -45,6 +45,7 @@ namespace Painting
             CirPanel.Visible = true;
             RecPanel.Visible = false;
             WagonPanel.Visible = false;
+            TrainPanel.Visible = false;
         }
         private void CreatRecBtn_Click(object sender, EventArgs e)
         {
@@ -53,6 +54,7 @@ namespace Painting
             RecPanel.Visible = true; 
             CirPanel.Visible = false;
             WagonPanel.Visible = false;
+            TrainPanel.Visible = false;
         }
         private void MoveBtn_Click(object sender, EventArgs e)
         {
@@ -71,7 +73,8 @@ namespace Painting
         {
             draw = new MyTrain(0, 0, 0, 0);
             action = Action.Train;
-            WagonPanel.Visible = true;
+            TrainPanel.Visible = true;
+            WagonPanel.Visible = false;
             CirPanel.Visible = false;
             RecPanel.Visible = false;
         }
@@ -118,7 +121,7 @@ namespace Painting
                 case Action.Vagon:
                     if (Int32.TryParse(SizeWagonBox.Text, out l))
                     {
-                        draw = new MyWagon(e.X, e.Y, l, rnd.Next(100));
+                        draw = new MyWagon(e.X, e.Y, l);
                         draw.Drawer(graphics);
                         Figure.Add(draw);
                         break;
@@ -129,13 +132,14 @@ namespace Painting
                         break;
                     }
                 case Action.Train:
-                    if ((Int32.TryParse(SizeWagonBox.Text, out l)) && (Int32.TryParse(LengthTrainBox.Text, out length)))
+                    if ((Int32.TryParse(SizeTrainBox.Text, out l)) && (Int32.TryParse(LengthTrainBox.Text, out length)))
                         {
                         draw.L = l;
                         draw.Length = length;
                         draw = new MyTrain(e.X, e.Y, l, length);
                         draw.Drawer(graphics);
                         Figure.Add(draw);
+                        CargoSumBox.Text = Convert.ToString(draw.CargoSum());
                         break;
                     }
 
@@ -164,16 +168,22 @@ namespace Painting
 
         private void WagonCreatBtn_Click(object sender, EventArgs e)
         {
-            draw = new MyWagon(0, 0, 0, 0);
+            draw = new MyWagon(0, 0, 0);
             action = Action.Vagon;
             WagonPanel.Visible = true;
             CirPanel.Visible = false; 
             RecPanel.Visible = false;
+            TrainPanel.Visible = false;
         }
 
         private void panel1_MouseUp(object sender, MouseEventArgs e)
         {
-            IsClicked = false;
+            if(action == Action.Move)
+            {
+                IsClicked = false;
+            }
+
+            
         }
 
         private void panel1_MouseMove(object sender, MouseEventArgs e)

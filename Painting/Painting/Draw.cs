@@ -36,6 +36,10 @@ namespace Painting
         {
 
         }
+        public virtual int CargoSum()
+        {
+            return 0;
+        }
 
     }
 }
