@@ -22,10 +22,10 @@ namespace Painting
     public partial class Form1 : Form
     {
         Graphics graphics;
-        Draw draw,MoveItem;
+        Draw MoveItem;
         List<Draw> Figure = new List<Draw>();
         Action action = Action.None;
-        private int StartX, StartY,height,width,l, length;
+        private int StartX, StartY;
         private bool IsClicked;
         public Form1()
         {
@@ -40,7 +40,6 @@ namespace Painting
 
         private void CreatCirclBtn_Click(object sender, EventArgs e)
         {
-            draw = new MyCircle(0, 0, 0, 0);
             action = Action.Circle;
             CirPanel.Visible = true;
             RecPanel.Visible = false;
@@ -49,7 +48,6 @@ namespace Painting
         }
         private void CreatRecBtn_Click(object sender, EventArgs e)
         {
-            draw = new MyRectangle(0, 0, 0, 0);
             action = Action.Rect;
             RecPanel.Visible = true; 
             CirPanel.Visible = false;
@@ -71,7 +69,6 @@ namespace Painting
 
         private void button1_Click(object sender, EventArgs e)
         {
-            draw = new MyTrain(0, 0, 0, 0);
             action = Action.Train;
             TrainPanel.Visible = true;
             WagonPanel.Visible = false;
@@ -81,15 +78,15 @@ namespace Painting
 
         private void panel1_MouseClick(object sender, MouseEventArgs e)
         {
+            Draw draw;
+            int height, width, l, length;
             Random rnd = new Random();
             switch (action)
             {
                 case Action.Circle:
                     if (Int32.TryParse(SizeBox.Text, out height))
                     {
-                        draw.Heigth = height;
-                        draw.Width = height;
-                        draw = new MyCircle(e.X, e.Y, draw.Heigth, draw.Width);
+                        draw = new MyCircle(e.X, e.Y, height, height);
                         draw.Drawer(graphics);
                         Figure.Add(draw);
                         break;
@@ -103,9 +100,7 @@ namespace Painting
                 case Action.Rect:
                     if (Int32.TryParse(HeigthBox.Text, out height) && Int32.TryParse(WidthBox.Text, out width))
                     {
-                        draw.Width = width;
-                        draw.Heigth = height;
-                        draw = new MyRectangle(e.X, e.Y, draw.Heigth, draw.Width);
+                        draw = new MyRectangle(e.X, e.Y, height, width);
                         draw.Drawer(graphics);
                         Figure.Add(draw);
                         break;
@@ -134,12 +129,10 @@ namespace Painting
                 case Action.Train:
                     if ((Int32.TryParse(SizeTrainBox.Text, out l)) && (Int32.TryParse(LengthTrainBox.Text, out length)))
                         {
-                        draw.L = l;
-                        draw.Length = length;
-                        draw = new MyTrain(e.X, e.Y, l, length);
-                        draw.Drawer(graphics);
-                        Figure.Add(draw);
-                        CargoSumBox.Text = Convert.ToString(draw.CargoSum());
+                        MyTrain train = new MyTrain(e.X, e.Y, l, length);
+                        train.Drawer(graphics);
+                        Figure.Add(train);
+                        CargoSumBox.Text = Convert.ToString(train.CargoSum());
                         break;
                     }
 
@@ -168,7 +161,6 @@ namespace Painting
 
         private void WagonCreatBtn_Click(object sender, EventArgs e)
         {
-            draw = new MyWagon(0, 0, 0);
             action = Action.Vagon;
             WagonPanel.Visible = true;
             CirPanel.Visible = false; 

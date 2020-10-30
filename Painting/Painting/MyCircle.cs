@@ -9,7 +9,7 @@ namespace Painting
 {
     class MyCircle : Draw
     {
-        private int width,heigth,x,y;
+        private int width,heigth;
         public override int Width
         {
             get
@@ -63,7 +63,7 @@ namespace Painting
         }
         public override void Drawer(Graphics graphics)
         {
-            graphics.DrawEllipse(new Pen(new SolidBrush(Color.Black)), x - width / 2, y - heigth / 2, width, heigth);
+            graphics.DrawEllipse(new Pen(new SolidBrush(Color.Black)), X - width / 2, Y - heigth / 2, width, heigth);
         }
         public override void Move(int StartX, int StartY, int eX, int eY)
         {
@@ -71,7 +71,7 @@ namespace Painting
         }
         public override bool IsPointInside(int Ex, int Ey)
         {
-            if(Math.Pow((Ex - this.x ),2) + Math.Pow((Ey - this.y), 2) <= Math.Pow(width/2,2))
+            if(Math.Pow((Ex - this.X ),2) + Math.Pow((Ey - this.Y), 2) <= Math.Pow(width/2,2))
             {
                 return true;
             }

@@ -9,7 +9,7 @@ namespace Painting
 {
     class MyRectangle : Draw
     {
-        private int width,heigth, x, y;
+        private int width,heigth;
         public override int Width
         {
             get

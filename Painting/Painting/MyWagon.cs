@@ -11,9 +11,9 @@ namespace Painting
     {
         MyRectangle Body;
         MyCircle Wheel_1, Wheel_2;
-        private int l, width, heigth, x, y, cargo;
+        private int l, width, heigth, cargo;
         Random rnd = new Random();
-        public override int L
+        public virtual int L
         {
             get
             {
@@ -46,7 +46,7 @@ namespace Painting
                 heigth = value;
             }
         }
-        public override int Cargo
+        public virtual int Cargo
         {
             get
             {

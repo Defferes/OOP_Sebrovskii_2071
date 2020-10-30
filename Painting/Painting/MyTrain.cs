@@ -10,9 +10,8 @@ namespace Painting
     class MyTrain : Draw
     {
         private int l, length, cargoSum;
-        private MyWagon Wagon;
         private List<MyWagon> Wagons = new List<MyWagon>();
-        public override int L
+        public int L
         {
             get
             {
@@ -23,7 +22,7 @@ namespace Painting
                 l = value;
             }
         }
-        public override int Length
+        public int Length
         {
             get
             {
@@ -48,8 +47,9 @@ namespace Painting
                 item.Drawer(graphics);
             }
         }
-        public override void WagonsAdding(int x, int y)
+        public void WagonsAdding(int x, int y)
         {
+            MyWagon Wagon;
             Random rndCargo = new Random();
             Random rnd = new Random();
             for (int i = 1; i <= Length; i++)
@@ -84,7 +84,7 @@ namespace Painting
             }
                 
         }
-        public override int CargoSum()
+        public int CargoSum()
         {
             foreach (MyWagon item in Wagons)
             {

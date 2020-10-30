@@ -10,13 +10,11 @@ namespace Painting
 {
     class Draw
     {
+        protected int x, y;
         public virtual int X { get; set; }
         public virtual int Y { get; set; }
         public virtual int Width { get; set; }
         public virtual int Heigth { get; set; }
-        public virtual int L { get; set; }
-        public virtual int Length { get; set; }
-        public virtual int Cargo { get; set; }
 
         public virtual void Drawer(Graphics graphics)
         {
@@ -31,14 +29,6 @@ namespace Painting
         public virtual bool IsPointInside(int Ex, int Ey)
         {
             return false;
-        }
-        public virtual void WagonsAdding(int x, int y)
-        {
-
-        }
-        public virtual int CargoSum()
-        {
-            return 0;
         }
 
     }

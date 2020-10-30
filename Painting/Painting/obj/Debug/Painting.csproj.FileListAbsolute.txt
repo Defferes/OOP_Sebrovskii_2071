@@ -8,3 +8,13 @@ C:\Users\Deferes\Desktop\OOP_Sebrovskii\Painting\Painting\obj\Debug\Painting.csp
 C:\Users\Deferes\Desktop\OOP_Sebrovskii\Painting\Painting\obj\Debug\Painting.csproj.CoreCompileInputs.cache
 C:\Users\Deferes\Desktop\OOP_Sebrovskii\Painting\Painting\obj\Debug\Painting.exe
 C:\Users\Deferes\Desktop\OOP_Sebrovskii\Painting\Painting\obj\Debug\Painting.pdb
+C:\Users\Deferes\Desktop\OOP_Sebrovskii_2071\Painting\Painting\bin\Debug\Painting.exe.config
+C:\Users\Deferes\Desktop\OOP_Sebrovskii_2071\Painting\Painting\bin\Debug\Painting.exe
+C:\Users\Deferes\Desktop\OOP_Sebrovskii_2071\Painting\Painting\bin\Debug\Painting.pdb
+C:\Users\Deferes\Desktop\OOP_Sebrovskii_2071\Painting\Painting\obj\Debug\Painting.csprojAssemblyReference.cache
+C:\Users\Deferes\Desktop\OOP_Sebrovskii_2071\Painting\Painting\obj\Debug\Painting.Form1.resources
+C:\Users\Deferes\Desktop\OOP_Sebrovskii_2071\Painting\Painting\obj\Debug\Painting.Properties.Resources.resources
+C:\Users\Deferes\Desktop\OOP_Sebrovskii_2071\Painting\Painting\obj\Debug\Painting.csproj.GenerateResource.cache
+C:\Users\Deferes\Desktop\OOP_Sebrovskii_2071\Painting\Painting\obj\Debug\Painting.csproj.CoreCompileInputs.cache
+C:\Users\Deferes\Desktop\OOP_Sebrovskii_2071\Painting\Painting\obj\Debug\Painting.exe
+C:\Users\Deferes\Desktop\OOP_Sebrovskii_2071\Painting\Painting\obj\Debug\Painting.pdb
